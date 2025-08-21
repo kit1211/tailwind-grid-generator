@@ -198,6 +198,7 @@ export default function TailwindGridGenerator() {
   const [showAlert, setShowAlert] = useState(false)
   const [alertMessage, setAlertMessage] = useState("")
   const [previewWidth, setPreviewWidth] = useState(640)
+  const [displayableWidth, setDisplayableWidth] = useState(640)
 
   const updateConfig = useCallback((key: keyof GridConfig, value: any) => {
     setConfig((prev) => ({ ...prev, [key]: value }))
@@ -457,6 +458,13 @@ const items = ${JSON.stringify(config.mockData)}
       }
     }
   }, [isDragging, handleMouseMove, handleMouseUp])
+
+  useEffect(() => {
+    const container = document.getElementById("preview-container")
+    if (container) {
+      setDisplayableWidth(isDragging ? previewWidth : container.offsetWidth)
+    }
+  }, [previewWidth, isDragging])
 
   const handleMockDataChange = (value: string) => {
     setMockDataType(value)
@@ -809,9 +817,7 @@ const items = ${JSON.stringify(config.mockData)}
                   <span className="text-muted-foreground">{previewMode} breakpoint</span>
                   <span className="text-muted-foreground">{config.items} items</span>
                   <span className="text-muted-foreground">
-                    {Math.round(
-                      isDragging ? previewWidth : document.getElementById("preview-container")?.offsetWidth || 0,
-                    )}
+                    {Math.round(displayableWidth)}
                     px
                   </span>
                 </div>
