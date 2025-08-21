@@ -28,7 +28,7 @@ To get a local copy up and running, follow these simple steps.
 ### Prerequisites
 
 - Node.js (v18.x or later)
-- A package manager like `npm`, `yarn`, or `pnpm`
+- A package manager like `npm`, `yarn`, or `bun`
 
 ### Installation & Usage
 
@@ -44,7 +44,7 @@ To get a local copy up and running, follow these simple steps.
     # or
     yarn install
     # or
-    pnpm install
+    bun install
     ```
 
 3.  **Run the development server:**
@@ -53,7 +53,7 @@ To get a local copy up and running, follow these simple steps.
     # or
     yarn dev
     # or
-    pnpm dev
+    bun dev
     ```
 
 4.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
